@@ -4,7 +4,10 @@ const {
   verifyAccount,
   verifyIfCpfAlreadyExists,
 } = require('../middlewares/verifyAccount');
-const { create } = require('../controllers/accountController');
+
+const { verifyLogin } = require('../middlewares/verifyLogin');
+
+const { create, login } = require('../controllers/accountController');
 
 route.post(
   '/account/register',
@@ -12,5 +15,7 @@ route.post(
   verifyIfCpfAlreadyExists,
   create,
 );
+
+route.post('/account/login', verifyLogin, login);
 
 module.exports = route;

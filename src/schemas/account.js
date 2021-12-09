@@ -12,6 +12,18 @@ const verifyAccountFields = Joi.object({
     .required(),
 });
 
+const verifyLoginFields = Joi.object({
+  cpf: Joi.string()
+    .length(11)
+    .pattern(/^\d{11}$/)
+    .required(),
+  password: Joi.string()
+    .length(6)
+    .pattern(/^\d{6}$/)
+    .required(),
+});
+
 module.exports = {
   verifyAccountFields,
+  verifyLoginFields,
 };
